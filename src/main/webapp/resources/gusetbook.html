@@ -1,0 +1,60 @@
+
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+
+<!-- axios 사용하기 위해 필요한 src -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+
+  // 즉시 실행 함수
+  const guestService = (function() {
+
+    // axios를 가지고 get,put,delete,등등 많이 연습!
+
+    // 조회
+    const postAdd = async (book) => {
+
+      const data = await axios.post("http://localhost:8080/ex2", book);
+
+      return data;
+    }
+
+    const getList = async () => {
+
+      const {data} = await axios.get("http://localhost:8080/exList")
+
+      console.log(data)
+
+      return data
+    }
+
+    const getRead = async (tno) => {
+
+        const {data} = await axios.get(`http://localhost:8080/exRead/${tno}`)
+
+        return data
+    }
+
+    return {postAdd, getList, getRead}
+
+  })();
+
+  guestService.getRead(2000);
+
+  // package가 js에는 없다. 따라서 나온게 앵귤러, react이다.
+  // url을 알면 보안에 문제가 많다.
+  //guestService.getList();
+
+  // json의 객체를 만들기 위해 obj라는 객체를 만든다.
+  //const obj = {title : "AAA", memo : "BBB", writer : "user0"}
+
+  //guestService.postAdd(obj);
+
+</script>
+
+</body>
+</html>

@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
+import java.time.LocalDate;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -15,20 +17,25 @@ public class PageRequestDTO {
 
     @Builder.Default
     private int page = 1;
-
     @Builder.Default
     private int size = 10;
 
-    public int getSkip() {
+    private String keyword;
 
-        page = page <= 1 ? 1: page;
+    private LocalDate from, to;
 
-        size = size <= 10 ? 10 : size >= 100 ? 100 : size;
+    private boolean complete;
 
-        log.info("====================");
+    public int getSkip(){
+
+        size = size <= 10? 10: size >= 100? 100:size;
+
+        log.info("-------------------------------");
         log.info(page);
         log.info(size);
 
-        return (page - 1) * size;
+
+        return (page -1) * size;
     }
+
 }

@@ -5,11 +5,8 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import javax.servlet.Filter;
 
-
-// web.xml을 대신한다
+//web.xml
 public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
-
-    // 이런설정은 한번만 설정한다.
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{RootConfig.class};
@@ -22,7 +19,6 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 
     @Override
     protected String[] getServletMappings() {
-
         return new String[]{"/"};
     }
 

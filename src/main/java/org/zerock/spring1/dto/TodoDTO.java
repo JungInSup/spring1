@@ -1,16 +1,30 @@
 package org.zerock.spring1.dto;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class TodoDTO {
 
-    private String title, memo;
-    //private String title, memo, writer;
+    private Long tno;
 
+    private String title, memo, writer;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dueDate;
+
+    private boolean complete;
+
+    @JsonFormat(pattern = "yyyy-MM-dd kk:mm:ss")
+    private LocalDateTime regDate, modDate;
 
 
 }
